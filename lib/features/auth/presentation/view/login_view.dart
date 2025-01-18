@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rentify_flat_management/features/auth/presentation/view/signup_view.dart';
+import 'package:rentify_flat_management/features/auth/presentation/view_model/login/login_bloc.dart';
 
 // Import the SignUp Screen
 
@@ -30,24 +32,7 @@ class LoginScreenView extends StatelessWidget {
         Center(
           child: SingleChildScrollView(
             child:
-                // listener: (context, state) {
-                //   if (state is LoginSuccess) {
-                //     // Navigate to Dashboard
-                //     Navigator.pushReplacement(
-                //       context,
-                //       MaterialPageRoute(
-                //         builder: (context) => const Dashboard(),
-                //       ),
-                //     );
-                //   } else if (state is LoginFailure) {
-                //     ScaffoldMessenger.of(context).showSnackBar(
-                //       SnackBar(
-                //         content: Text(state.errorMessage),
-                //         backgroundColor: Colors.red,
-                //       ),
-                //     );
-                //   }
-                // },
+               
                 Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -161,12 +146,12 @@ class LoginScreenView extends StatelessWidget {
                       TextButton(
                         onPressed: () {
                           // Navigate to the Sign Up Screen
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SignupScreenView(),
-                            ),
-                          );
+                          context
+                              .read<LoginBloc>()
+                              .add(NavigateRegisterScreenEvent(
+                                context: context,
+                                destination: const SignupScreenView(),
+                              ));
                         },
                         child: const Text(
                           "Don't have an account? Sign Up",

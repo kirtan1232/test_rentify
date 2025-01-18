@@ -46,6 +46,8 @@ dependencies:
   dartz: ^0.10.1
   hive: ^2.2.3
   introduction_screen: ^3.1.14
+  shared_preferences: ^2.3.5
+  adapters_flutter: ^2.1.9
 
 dev_dependencies:
   flutter_test:

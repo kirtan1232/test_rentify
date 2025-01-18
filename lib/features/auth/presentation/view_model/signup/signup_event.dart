@@ -7,19 +7,17 @@ sealed class SignupEvent extends Equatable {
   List<Object> get props => [];
 }
 
-
 class SignupUser extends SignupEvent {
   final BuildContext context;
-  final String fName;
-  final String lName;
+  final String fullName;
+
   final String phone;
   final String email;
   final String password;
 
   const SignupUser({
     required this.context,
-    required this.fName,
-    required this.lName,
+    required this.fullName,
     required this.phone,
     required this.email,
     required this.password,

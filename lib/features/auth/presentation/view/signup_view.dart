@@ -14,9 +14,7 @@ class SignupScreenView extends StatefulWidget {
 class _SignupScreenViewState extends State<SignupScreenView> {
   final _key = GlobalKey<FormState>();
 
-  final _fnameController = TextEditingController();
-
-  final _lnameController = TextEditingController();
+  final _fullnameController = TextEditingController();
 
   final _phoneController = TextEditingController();
 
@@ -85,9 +83,9 @@ class _SignupScreenViewState extends State<SignupScreenView> {
                       const SizedBox(height: 20),
                       // Full Name Field
                       TextFormField(
-                        controller: _fnameController,
+                        controller: _fullnameController,
                         decoration: InputDecoration(
-                          labelText: "First Name",
+                          labelText: "Full Name",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -95,16 +93,7 @@ class _SignupScreenViewState extends State<SignupScreenView> {
                       ),
                       const SizedBox(height: 16),
                       // Full Name Field
-                      TextFormField(
-                        controller: _lnameController,
-                        decoration: InputDecoration(
-                          labelText: "Last Name",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 16),
+
                       // Phone Number Field
                       TextFormField(
                         controller: _phoneController,
@@ -166,8 +155,7 @@ class _SignupScreenViewState extends State<SignupScreenView> {
                               context.read<SignupBloc>().add(
                                     SignupUser(
                                       context: context,
-                                      fName: _fnameController.text,
-                                      lName: _lnameController.text,
+                                      fullName: _fullnameController.text,
                                       phone: _phoneController.text,
                                       email: _emailController.text,
                                       password: _passwordController.text,

@@ -13,8 +13,7 @@ class AuthLocalDataSource implements IAuthDataSource {
     // Return Empty AuthEntity
     return Future.value(const AuthEntity(
       userId: "1",
-      fName: "",
-      lName: "",
+      fullName: "",
       phone: "",
       email: "",
       password: "",

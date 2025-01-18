@@ -6,15 +6,14 @@ import 'package:rentify_flat_management/features/auth/domain/entity/auth_entity.
 import 'package:rentify_flat_management/features/auth/domain/repository/auth_repository.dart';
 
 class SignupUserParams extends Equatable {
-  final String fname;
-  final String lname;
+  final String fullname;
+
   final String phone;
   final String email;
   final String password;
 
   const SignupUserParams({
-    required this.fname,
-    required this.lname,
+    required this.fullname,
     required this.phone,
     required this.email,
     required this.password,
@@ -22,15 +21,14 @@ class SignupUserParams extends Equatable {
 
   //intial constructor
   const SignupUserParams.initial({
-    required this.fname,
-    required this.lname,
+    required this.fullname,
     required this.phone,
     required this.email,
     required this.password,
   });
 
   @override
-  List<Object?> get props => [fname, lname, phone, email, password];
+  List<Object?> get props => [fullname, phone, email, password];
 }
 
 class SignupUseCase implements UsecaseWithParams<void, SignupUserParams> {
@@ -41,8 +39,7 @@ class SignupUseCase implements UsecaseWithParams<void, SignupUserParams> {
   @override
   Future<Either<Failure, void>> call(SignupUserParams params) {
     final authEntity = AuthEntity(
-      fName: params.fname,
-      lName: params.lname,
+      fullName: params.fullname,
       phone: params.phone,
       email: params.email,
       password: params.password,
