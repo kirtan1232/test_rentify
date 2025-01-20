@@ -22,10 +22,10 @@ class HomeState extends Equatable {
           child: Text('Search'),
         ),
         Center(
-          child: Text('Notifications'),
+          child: Text('Scan QR'),
         ),
         Center(
-          child: Text('Scan QR'),
+          child: Text('Notifications'),
         ),
         Center(
           child: Text('Settings'),

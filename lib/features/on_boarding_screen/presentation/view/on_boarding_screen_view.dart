@@ -24,6 +24,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: IntroductionScreen(
+        globalBackgroundColor: const Color.fromARGB(255, 61, 194, 65),
         pages: _onBordingCubit.getPages(context), // Fetch pages from ViewModel
         onDone: () => _onBordingCubit.navigateToLogin(context),
         onSkip: () => _onBordingCubit.navigateToLogin(context),

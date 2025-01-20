@@ -5,36 +5,35 @@ import 'package:rentify_flat_management/features/auth/presentation/view/login_vi
 import 'package:rentify_flat_management/features/auth/presentation/view_model/login/login_bloc.dart';
 
 class OnBoardingScreenCubit extends Cubit<void> {
-  // OnBoardingScreenCubit() : super(0);
   OnBoardingScreenCubit(this._loginBloc) : super(null);
   final LoginBloc _loginBloc;
 
   List<PageViewModel> getPages(BuildContext context) {
     return [
       PageViewModel(
-        title: "Your Health, Just a Tap Away!",
+        title: "Find Your Dream Flat\nEffortlessly",
         body:
-            "Discover a seamless way to get the medicines you need, delivered to your doorstep.",
+            "Explore verified listings, connect with landlords,\nand rent your ideal flat with ease.",
         image: Center(
           child: Image.asset('assets/images/logo.png', height: 200),
         ),
         decoration: getPageDecoration(),
       ),
       PageViewModel(
-        title: "Order Medicines Easily",
+        title: "Get Verified Listings",
         body:
-            "Browse thousands of medications and health products, all at your fingertips.",
+            "Access a wide range of verified listings\nwith accurate information to avoid hassle.",
         image: Center(
-          child: Image.asset('assets/images/logo.png', height: 200),
+          child: Image.asset('assets/images/verify.png', height: 200),
         ),
         decoration: getPageDecoration(),
       ),
       PageViewModel(
-        title: "Fast Delivery & Reliable Support",
+        title: "Easy & Secure Transactions",
         body:
-            "Enjoy fast deliveries, live tracking, and personalized support whenever you need it.",
+            "Make payments securely and track your\ntransactions for a stress-free experience.",
         image: Center(
-          child: Image.asset('assets/images/logo.png', height: 200),
+          child: Image.asset('assets/images/payment.png', height: 200),
         ),
         decoration: getPageDecoration(),
       ),
@@ -48,7 +47,7 @@ class OnBoardingScreenCubit extends Cubit<void> {
       bodyTextStyle: TextStyle(fontSize: 16),
       bodyPadding: EdgeInsets.all(16.0),
       imagePadding: EdgeInsets.only(top: 40),
-      pageColor: Color.fromARGB(255, 144, 202, 249),
+      pageColor: Color.fromARGB(255, 5, 228, 24), // Light green background
     );
   }
 
@@ -60,7 +59,8 @@ class OnBoardingScreenCubit extends Cubit<void> {
       activeSize: const Size(22, 10),
       activeShape:
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-      activeColor: Colors.blue,
+      activeColor:
+          const Color.fromARGB(239, 9, 218, 16), // Active dot color (green)
     );
   }
 
@@ -71,7 +71,7 @@ class OnBoardingScreenCubit extends Cubit<void> {
       MaterialPageRoute(
           builder: (context) => BlocProvider.value(
                 value: _loginBloc,
-                child: const LoginScreenView(),
+                child: LoginScreenView(),
               )),
     );
   }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rentify_flat_management/app/di/di.dart';
 import 'package:rentify_flat_management/features/auth/presentation/view/login_view.dart';
+import 'package:rentify_flat_management/features/auth/presentation/view_model/login/login_bloc.dart';
 import 'package:rentify_flat_management/features/auth/presentation/view_model/signup/signup_bloc.dart';
 
 class SignupScreenView extends StatefulWidget {
@@ -90,6 +92,12 @@ class _SignupScreenViewState extends State<SignupScreenView> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
+                        validator: ((value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter full name';
+                          }
+                          return null;
+                        }),
                       ),
                       const SizedBox(height: 16),
                       // Full Name Field
@@ -108,6 +116,12 @@ class _SignupScreenViewState extends State<SignupScreenView> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
+                        validator: ((value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter phone number';
+                          }
+                          return null;
+                        }),
                       ),
                       const SizedBox(height: 16),
                       // Email Field
@@ -120,6 +134,12 @@ class _SignupScreenViewState extends State<SignupScreenView> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
+                        validator: ((value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter email';
+                          }
+                          return null;
+                        }),
                       ),
                       const SizedBox(height: 16),
                       // Password Field
@@ -132,6 +152,12 @@ class _SignupScreenViewState extends State<SignupScreenView> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
+                        validator: ((value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter password';
+                          }
+                          return null;
+                        }),
                       ),
                       const SizedBox(height: 16),
                       // Confirm Password Field
@@ -144,6 +170,12 @@ class _SignupScreenViewState extends State<SignupScreenView> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
+                        validator: ((value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter confirm password';
+                          }
+                          return null;
+                        }),
                       ),
                       const SizedBox(height: 20),
                       // Sign Up Button
@@ -187,7 +219,12 @@ class _SignupScreenViewState extends State<SignupScreenView> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const LoginScreenView(),
+                                  builder: (context) {
+                                    return BlocProvider<LoginBloc>(
+                                      create: (_) => getIt<LoginBloc>(),
+                                      child: LoginScreenView(),
+                                    );
+                                  },
                                 ),
                               );
                             },
